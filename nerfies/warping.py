@@ -156,6 +156,7 @@ class TranslationField(nn.Module):
            points: jnp.ndarray,
            metadata_embed: jnp.ndarray,
            extra: Dict[str, Any]):
+    print(points.shape)
     points_embed = self.points_encoder(points, alpha=extra.get('alpha'))
     inputs = jnp.concatenate([points_embed, metadata_embed], axis=-1)
     translation = self.mlp(inputs)
@@ -326,7 +327,7 @@ class SE3Field(nn.Module):
     points_embed = self.points_encoder(points, alpha=extra.get('alpha'))
     inputs = jnp.concatenate([points_embed, metadata_embed], axis=-1)
     trunk_output = self.trunk(inputs)
-    print(points.shape)
+    
     w = self.branches['w'](trunk_output)
     v = self.branches['v'](trunk_output)
     theta = jnp.linalg.norm(w, axis=-1)
