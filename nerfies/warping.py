@@ -36,6 +36,8 @@ def create_warp_field(
   """Factory function for warp fields."""
   kwargs = {**kwargs}
   print(field_type)
+  import pdb
+  pdb.set_trace()
   if field_type == 'translation':
     warp_field_cls = TranslationField
   elif field_type == 'se3':
