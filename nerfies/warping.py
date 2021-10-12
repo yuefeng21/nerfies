@@ -36,8 +36,6 @@ def create_warp_field(
   """Factory function for warp fields."""
   kwargs = {**kwargs}
   print(field_type)
-  import pdb
-  pdb.set_trace()
   if field_type == 'translation':
     warp_field_cls = TranslationField
   elif field_type == 'se3':
@@ -328,6 +326,8 @@ class SE3Field(nn.Module):
            metadata_embed: jnp.ndarray,
            extra: Dict[str, Any]):
     print(points.shape)
+    import pdb
+    pdb.set_trace()
     points_embed = self.points_encoder(points, alpha=extra.get('alpha'))
     inputs = jnp.concatenate([points_embed, metadata_embed], axis=-1)
     trunk_output = self.trunk(inputs)
