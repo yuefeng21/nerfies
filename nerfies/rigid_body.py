@@ -30,6 +30,8 @@ def skew(w: jnp.ndarray) -> jnp.ndarray:
   Returns:
     W: (3, 3) A skew matrix such that W @ v == w x v
   """
+  import pdb
+  pdb.set_trace()
   w = jnp.reshape(w, (3))
   return jnp.array([[0.0, -w[2], w[1]], \
                    [w[2], 0.0, -w[0]], \
